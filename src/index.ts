@@ -6,8 +6,13 @@ import combosRoutes from './routes/CombosRoutes';
 import personasRoutes from './routes/PersonasRoutes';
 import proximosEstrenosRoutes from './routes/ProximosEstrenosRoutes';
 import solicitantesRoutes from './routes/SolicitantesRoutes';
+
 import cors from 'cors';
 import morgan from 'morgan';
+
+// parte marketing , lo demas no toque nada 
+import marketingRoutes from './routes/MarketingRoutes';
+import transmitenRoutes from './routes/TransmitenRoutes';
 class Servidor{
 
     public app:Application;
@@ -32,6 +37,9 @@ class Servidor{
         this.app.use(solicitantesRoutes);
         this.app.use(proximosEstrenosRoutes);
         this.app.use(beneficiosRoutes);
+        // agrego lo de marketing
+        this.app.use(marketingRoutes);
+        this.app.use(transmitenRoutes);
         
 
     } 

@@ -12,13 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class CarteleraControllers {
-    get(req, res) {
+class TransmitenControllers {
+    verTransmision(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { fecha } = req.params;
-            const cartelera = yield database_1.default.query("SELECT * FROM PELICULAS WHERE ID_PELICULA IN (SELECT TIENEN.ID_PELICULA FROM TIENEN WHERE FECHA_INICIO< ? AND FECHA_FIN> ?)", [fecha, fecha]);
-            res.json(cartelera);
+            const { idPelicula } = req.params;
+            const transmision = yield database_1.default.query('SELECT * FROM TRANSMITEN WHERE ID_PELICULA = ? ', [idPelicula]);
+            res.json(transmision);
         });
     }
 }
-exports.carteleraControllers = new CarteleraControllers();
+exports.transmitenControllers = new TransmitenControllers();

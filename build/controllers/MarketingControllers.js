@@ -12,13 +12,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class CarteleraControllers {
-    get(req, res) {
+class MarketingControllers {
+    insertarEmpresa(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { fecha } = req.params;
-            const cartelera = yield database_1.default.query("SELECT * FROM PELICULAS WHERE ID_PELICULA IN (SELECT TIENEN.ID_PELICULA FROM TIENEN WHERE FECHA_INICIO< ? AND FECHA_FIN> ?)", [fecha, fecha]);
-            res.json(cartelera);
+            try {
+                const result = yield database_1.default.query('INSERT INTO EMPRESAS set ?', [req.body]);
+                res.json({ message: 'se ha guardado la empresa' });
+            }
+            catch (e) {
+                res.json({ message: 'ocurrio un error' });
+            }
+        });
+    }
+    getEmpresa(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const empresas = yield database_1.default.query('SELECT * FROM EMPRESAS');
+            res.json(empresas);
         });
     }
 }
-exports.carteleraControllers = new CarteleraControllers();
+exports.marketingControllers = new MarketingControllers();

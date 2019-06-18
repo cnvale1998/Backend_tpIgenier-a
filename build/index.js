@@ -13,6 +13,9 @@ const ProximosEstrenosRoutes_1 = __importDefault(require("./routes/ProximosEstre
 const SolicitantesRoutes_1 = __importDefault(require("./routes/SolicitantesRoutes"));
 const cors_1 = __importDefault(require("cors"));
 const morgan_1 = __importDefault(require("morgan"));
+// parte marketing , lo demas no toque nada 
+const MarketingRoutes_1 = __importDefault(require("./routes/MarketingRoutes"));
+const TransmitenRoutes_1 = __importDefault(require("./routes/TransmitenRoutes"));
 class Servidor {
     constructor() {
         this.app = express_1.default();
@@ -34,6 +37,9 @@ class Servidor {
         this.app.use(SolicitantesRoutes_1.default);
         this.app.use(ProximosEstrenosRoutes_1.default);
         this.app.use(BeneficiosRoutes_1.default);
+        // agrego lo de marketing
+        this.app.use(MarketingRoutes_1.default);
+        this.app.use(TransmitenRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
