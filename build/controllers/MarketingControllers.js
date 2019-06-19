@@ -17,10 +17,10 @@ class MarketingControllers {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const result = yield database_1.default.query('INSERT INTO EMPRESAS set ?', [req.body]);
-                res.json({ message: 'se ha guardado la empresa' });
+                res.json({ message: 'se ha guardado la consulta de marketing' });
             }
             catch (e) {
-                res.json({ message: 'ocurrio un error' });
+                res.json({ message: 'ocurrio un error lala' });
             }
         });
     }
