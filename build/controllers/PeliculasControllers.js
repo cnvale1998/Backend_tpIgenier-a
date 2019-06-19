@@ -12,19 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class TransmitenControllers {
-    verTransmision(req, res) {
+class PeliculasControllers {
+    get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id_pelicula } = req.params;
-            const transmision = yield database_1.default.query("SELECT * FROM transmiten WHERE ID_PELICULA = ?; ", [id_pelicula]);
+            const { id } = req.params;
             console.log(req.params);
-            //CON ESTO EVITAMOS QUE NOS DEVUELVA UN ARREGLO CON 1 SOLO ELEMENTO [{ELEMENTO}]
-            //Y ASEGURAMOS QUE DEVUELVA {ELEMENTO} QUE NO ES ARREGLO EQUIVALENTE A LA INTERFACE USADA.
-            if (transmision.length > 0) {
-                return res.json(transmision[0]);
-            }
-            res.status(404).json({ text: "no hay transmisiones para esa pelicula" });
+            const pelicula = yield database_1.default.query("SELECT * FROM PELICULAS WHERE ID_PELICULA=?", [id]);
+            res.json(pelicula);
         });
     }
 }
-exports.transmitenControllers = new TransmitenControllers();
+exports.peliculasControllers = new PeliculasControllers();
