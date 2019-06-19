@@ -4,12 +4,12 @@ import pool from '../database';
 class ConsultasControllers{
 
 
-  public async put (req: Request,res: Response): Promise<void> {
+public async insertarConsulta(req: Request,res: Response): Promise<void> {
         try{
           const result = await pool.query('INSERT INTO CONSULTAS set ?', [req.body]);
-          res.json({ message: 'Consulta guardada' });}
+          res.json({ message: 'se ha guardado la consulta' });}
         catch(e){
-          res.json({ message: 'Error' });
+          res.json({ message: 'ocurrio un error EN consultasController' });
         }
       }
 

@@ -20,5 +20,16 @@ class PersonasControllers {
             res.json(personas);
         });
     }
+	insertarPersona(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const result = yield database_1.default.query('INSERT IGNORE INTO EMPRESAS set ?', [req.body]);
+                res.json({ message: 'se ha guardado la persona' });
+            }
+            catch (e) {
+                res.json({ message: 'ocurrio un error' });
+            }
+        });
+    }
 }
 exports.personasControllers = new PersonasControllers();

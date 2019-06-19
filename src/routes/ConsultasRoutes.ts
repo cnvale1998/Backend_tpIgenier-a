@@ -11,7 +11,7 @@ import {consultasControllers} from '../controllers/ConsultasControllers';
      }
 
      config(){
-        this.router.put('/API/Consultas/',consultasControllers.put);
+         this.router.post('/API/Consultas/', consultasControllers.insertarConsulta);
         
         
      }

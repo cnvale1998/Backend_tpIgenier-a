@@ -39,7 +39,7 @@ class Servidor{
         this.app.use(proximosEstrenosRoutes);
         this.app.use(beneficiosRoutes);
         this.app.use(ciudadesRoutes);
-	this.app.use(consultasRoutes);
+	    this.app.use(consultasRoutes);
         // agrego lo de marketing
         this.app.use(marketingRoutes);
         this.app.use(transmitenRoutes);

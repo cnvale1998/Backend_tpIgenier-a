@@ -12,7 +12,7 @@ import {personasControllers} from '../controllers/PersonasControllers';
 
      config(){
         this.router.get('/API/Personas/:fecha',personasControllers.get);
-        
+        this.router.post('/API/Personas/', marketingControllers.insertarPersona);
         
      }
  }

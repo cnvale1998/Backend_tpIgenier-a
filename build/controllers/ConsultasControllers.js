@@ -13,21 +13,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
 class ConsultasControllers {
-    put(req, res) {
+    
+    insertarConsulta(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const result = yield database_1.default.query('INSERT INTO CONSULTAS set ?', [req.body]);
-                res.json({ message: 'Consulta guardada' });
+                res.json({ message: 'se ha guardado la consulta' });
             }
             catch (e) {
-                res.json({ message: 'Error' });
+                res.json({ message: 'ocurrio un error en consultasController' });
             }
-        });
-    }
-    get(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const consultas = yield database_1.default.query('SELECT * FROM consultas');
-            res.json(consultas);
         });
     }
 }

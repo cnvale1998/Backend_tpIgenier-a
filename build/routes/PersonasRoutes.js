@@ -9,6 +9,7 @@ class PersonasRoutes {
     }
     config() {
         this.router.get('/API/Personas/:fecha', PersonasControllers_1.personasControllers.get);
+		this.router.post('/API/Personas/', PersonasControllers_1.personasControllers.insertarPersona);
     }
 }
 const personasRoutes = new PersonasRoutes();
