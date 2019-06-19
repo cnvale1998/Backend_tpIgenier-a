@@ -16,8 +16,11 @@ class TransmitenControllers {
     verTransmision(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { idPelicula } = req.params;
-            const transmision = yield database_1.default.query('SELECT * FROM TRANSMITEN WHERE ID_PELICULA = ? ', [idPelicula]);
-            res.json(transmision);
+            const transmision = yield database_1.default.query("SELECT * FROM transmiten WHERE ID_PELICULA = ? ", [idPelicula]);
+            if (transmision.length > 0) {
+                return res.json(transmision[0]);
+            }
+            res.status(404).json({ text: "no hay transmisiones para esa pelicula" });
         });
     }
 }
