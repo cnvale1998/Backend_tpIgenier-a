@@ -1,5 +1,8 @@
-CREATE DATABASE IF NOT EXISTS cinemacenter;
-USE cinemacenter;
+drop database cinemacenter;
+create database cinemacenter;
+use cinemacenter;
+
+
 CREATE TABLE DISTRIBUIDORAS (
 ID_DISTRIBUIDORA INT NOT NULL,
 NOMBRE VARCHAR(20) NOT NULL,
@@ -33,7 +36,6 @@ INSERT INTO DIRECTORES VALUES(5,'Elizabeth','Chomko');
 INSERT INTO DIRECTORES VALUES(6,'Josh','Cooley');
 INSERT INTO DIRECTORES VALUES(7,'Anthony','Maras');
 
-
 
 
 CREATE TABLE PELICULAS (
@@ -42,12 +44,17 @@ NOMBRE VARCHAR(100) NOT NULL,
 FECHAESTRENO DATE,
 CLASIFICACION VARCHAR(100),
 GENERO VARCHAR(100),
+PROTAGONISTAS TEXT,
+RESENIA TEXT,
+NACIONALIDAD VARCHAR(50),
 DURACION INT,
-DISPONIBLE BIT,
+DISPONIBLE INT,
+TRAILER VARCHAR(250),
 
 ID_DIR1 INT NOT NULL,
 ID_DIR2 INT,
 ID_DISTRIBUIDORA INT NOT NULL,
+
 PRIMARY KEY (ID_PELICULA),
 FOREIGN KEY (ID_DISTRIBUIDORA) REFERENCES DISTRIBUIDORAS(ID_DISTRIBUIDORA),
 FOREIGN KEY (ID_DIR1) REFERENCES DIRECTORES(ID_DIRECTOR),
@@ -55,41 +62,38 @@ FOREIGN KEY (ID_DIR2) REFERENCES DIRECTORES(ID_DIRECTOR)
 );
 
 
-INSERT INTO PELICULAS VALUES (1,'BLINDADO 2D CAST',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'AM13','Acción Drama Thriller',128, 1,1,NULL,1);
+INSERT INTO PELICULAS VALUES (1,'BLINDADO 2D CAST',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'Apta para mayores de 13 años','Acción Drama Thriller','Chris Hemsworth, Rebecca Ferguson, Tessa Thompson, Liam Neeson, Emma Thompson, Kumail Nanjiani.', 'Tras la muerte de su esposa e hija en un accidente, Luna cayó en una profunda depresión. Pero un día, después de tener un sueño extraño donde se veía a si mismo manejando un auto y llevando en él a Selva (la mujer que trabajaba en el sector de limpieza de su ex-empresa) y su hijo Beni. Decide hacerlo realidad, y salvar a Selva y su hijo, aunque no los conozca.-','Estados Unidos', 128, 1, 'https://youtu.be/EqsUiiWgkcc', 1, NULL, 1);
 
-INSERT INTO PELICULAS VALUES (2,'DOLOR Y GLORIA 2D CAST',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'AM16','Comedia Drama',140, 1,1,NULL,1);
+INSERT INTO PELICULAS VALUES (2,'DOLOR Y GLORIA 2D CAST',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'Apta para mayores de 16 años','Comedia Drama', 'Antonio Banderas, Penélope Cruz, Leonardo Sbaraglia.' ,'Del director Pedro Almódovar, Antonio Banderas interpreta a Salvador Mallo, un aclamado director de cine que se encuentra en su ocaso. Su memoria lo llevará hasta su infancia en los años 60s, a sus primeros amores, su madre, su primer amor adulto en los 80, el descubrimiento del cine y las diferentes etapas de su vida.-', 'España', 140, 1,'https://youtu.be/4GMO3BgUIOk', 1,NULL,1);
 
-INSERT INTO PELICULAS VALUES (3,'MI MASCOTA ES UN LEON 2D CAST',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'ATP C/L','Familiar',140 , 1,1,NULL,2);
+INSERT INTO PELICULAS VALUES (3,'MI MASCOTA ES UN LEON 2D CAST',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'Apta para todo público con leyenda','Familiar', 'Monica Huarte, Martin Campilongo, Ana María Simón, Andrés López, Bruno Pinasco, Eugenio Derbez','Desde chiquita, Mia comienza una relación inusual con un cachorro de león blanco llamado Charlie, nacido en el refugio de leones de sus padres. Los dos amigos crecen juntos. A los 14 años de Mia, se entera que su amigo, ya un león adulto, será vendido y está en peligro, por lo que decide iniciar un viaje a través de la sabana africana para encontrar un nuevo hogar para Charlie donde pueda vivir libre', 'Francia', 140,1, 'https://youtu.be/03vtTdlRaPM',1,NULL,2);
 
-INSERT INTO PELICULAS VALUES (4,'X-MEN: DARK PHOENIX 2D CAST',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'AM13','Acción Ciencia Ficción',200, 1,1,NULL,2);
+INSERT INTO PELICULAS VALUES (4,'X-MEN: DARK PHOENIX 2D CAST',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'Apta para mayores de 13 años','Acción Ciencia Ficción', 'Sophie Turner, Jennifer Lawrence, Jessica Chastain, Tye Sheridan, James McAvoy, Michael Fassbender, Evan Peters, Nicholas Hoult, Kodi Smit-McPhee, Alexandra Shipp.','Jean Grey comienza a desarrollar increíbles poderes que la corrompen y la convierten en un Fénix oscuro. Ahora los demás X-Men deberán decidir si la vida de un miembro del equipo vale más que la vida de todas las personas que habitan la Tierra.', 'Estados Unidos', 200, 1, 'https://youtu.be/zinYgLzvOEw', 1,NULL,2);
 
-INSERT INTO PELICULAS VALUES (5,'X-MEN: DARK PHOENIX 2D SUB',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'AM13','Acción Ciencia Ficción',200, 1,1,NULL,2);
+INSERT INTO PELICULAS VALUES (5,'X-MEN: DARK PHOENIX 2D SUB',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'Apta para mayores de 13 años','Acción Ciencia Ficción', 'Sophie Turner, Jennifer Lawrence, Jessica Chastain, Tye Sheridan, James McAvoy, Michael Fassbender, Evan Peters, Nicholas Hoult, Kodi Smit-McPhee, Alexandra Shipp.','Jean Grey comienza a desarrollar increíbles poderes que la corrompen y la convierten en un Fénix oscuro. Ahora los demás X-Men deberán decidir si la vida de un miembro del equipo vale más que la vida de todas las personas que habitan la Tierra.', 'Estados Unidos', 200, 1, 'https://youtu.be/zinYgLzvOEw', 1,NULL,2);
 
-INSERT INTO PELICULAS VALUES (6,'X-MEN: DARK PHOENIX 3D CAST',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'AM13','Acción Ciencia Ficción',200, 1,1,NULL,2);
-
-
-INSERT INTO PELICULAS VALUES (7,'GODZILLA II 3D SUB',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'AM13','Acción Ciencia Fición Aventuras',145, 1,2,NULL,2);
-
-INSERT INTO PELICULAS VALUES (8,'GODZILLA II 2D CAST',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'AM13','Acción Ciencia Fición Aventuras',145, 1,2,NULL,2);
+INSERT INTO PELICULAS VALUES (6,'X-MEN: DARK PHOENIX 3D CAST',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'Apta para mayores de 13 años','Acción Ciencia Ficción', 'Sophie Turner, Jennifer Lawrence, Jessica Chastain, Tye Sheridan, James McAvoy, Michael Fassbender, Evan Peters, Nicholas Hoult, Kodi Smit-McPhee, Alexandra Shipp.','Jean Grey comienza a desarrollar increíbles poderes que la corrompen y la convierten en un Fénix oscuro. Ahora los demás X-Men deberán decidir si la vida de un miembro del equipo vale más que la vida de todas las personas que habitan la Tierra.', 'Estados Unidos', 200, 1, 'https://youtu.be/zinYgLzvOEw', 1,NULL,2);
 
 
-INSERT INTO PELICULAS VALUES (9,'ALADDIN 2D CAST',STR_TO_DATE('13-06-2019','%d-%m-%Y'),'ATP C/L','Aventuras',130, 0,3,NULL,3);
+INSERT INTO PELICULAS VALUES (7,'GODZILLA II 3D SUB',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'Apta para mayores de 13 años.','Acción Ciencia Ficción Aventuras', 'Millie Bobby Brown, Sally Hawkins, Vera Farmiga','La agencia crypto-zoológica: Monarch se enfrenta al ataque de una serie de monstruos del tamaño de dioses que incluye al poderoso Godzilla, quién se enfrenta con Mothra, Rodan y el Rey Ghidorah de tres cabezas','Estados Unidos', 145, 1, 'https://youtu.be/PNzyGviLklQ' ,2,NULL,2);
 
-INSERT INTO PELICULAS VALUES (10,'ALADDIN 3D CAST',STR_TO_DATE('13-06-2019','%d-%m-%Y'),'ATP C/L','Aventuras',130, 0,3,NULL,3);
-
-INSERT INTO PELICULAS VALUES (11,'JOHN WICK 3 2D CAST',STR_TO_DATE('13-06-2019','%d-%m-%Y'),'AM16 C/R','Acción',158, 0,4,NULL,4);
-
-INSERT INTO PELICULAS VALUES (12,'POKEMON 2D CAST',STR_TO_DATE('13-06-2019','%d-%m-%Y'),'ATP','Acción Ciencia Ficción',127, 0,4,NULL,4);
-
-INSERT INTO PELICULAS VALUES (13,'GARABANDAL',STR_TO_DATE('20-06-2019','%d-%m-%Y'),'ATP C/L','Biográfica',167, 0,5,NULL,5);
-
-INSERT INTO PELICULAS VALUES (14,'EL ARTICO',STR_TO_DATE('20-06-2019','%d-%m-%Y'),'Desconocido','Drama',129, 0,6,NULL,6);
-
-INSERT INTO PELICULAS VALUES (15,'LO QUE FUIMOS',STR_TO_DATE('20-06-2019','%d-%m-%Y'),'Desconocido','Drama Familiar',146, 0,7,NULL,7);
+INSERT INTO PELICULAS VALUES (8,'GODZILLA II 2D CAST',STR_TO_DATE('06-06-2019','%d-%m-%Y'),'Apta para mayores de 13 años.','Acción Ciencia Ficción Aventuras', 'Millie Bobby Brown, Sally Hawkins, Vera Farmiga','La agencia crypto-zoológica: Monarch se enfrenta al ataque de una serie de monstruos del tamaño de dioses que incluye al poderoso Godzilla, quién se enfrenta con Mothra, Rodan y el Rey Ghidorah de tres cabezas','Estados Unidos', 145, 1, 'https://youtu.be/PNzyGviLklQ' ,2,NULL,2);
 
 
+INSERT INTO PELICULAS VALUES (9,'ALADDIN 2D CAST',STR_TO_DATE('13-06-2019','%d-%m-%Y'),'Apta para todo público con leyenda','Aventuras','Will Smith, Naomi Scott, Mena Massoud, Billy Magnussen, Nasim Pedrad, Kamil Lemieszewski, Navid Negahban, Marwan Kenzari, Numan Acar','Versión live-action de Aladdin. Una lámpara mágica cambiará el destino de Aladdin, un joven callejero a través de los deseos concedidos por el Genio de la lámpara. Mientras el malvado Jafar intenta conseguirla para convertirse en el Sultán más poderoso de Agrabah.','Estados Unidos', 130, 0, 'https://youtu.be/1xouVEZ9lnU',3,NULL,3);
 
-
+INSERT INTO PELICULAS VALUES (10,'ALADDIN 3D CAST',STR_TO_DATE('13-06-2019','%d-%m-%Y'),'Apta para todo público con leyenda','Aventuras','Will Smith, Naomi Scott, Mena Massoud, Billy Magnussen, Nasim Pedrad, Kamil Lemieszewski, Navid Negahban, Marwan Kenzari, Numan Acar','Versión live-action de Aladdin. Una lámpara mágica cambiará el destino de Aladdin, un joven callejero a través de los deseos concedidos por el Genio de la lámpara. Mientras el malvado Jafar intenta conseguirla para convertirse en el Sultán más poderoso de Agrabah.','Estados Unidos', 130, 0, 'https://youtu.be/1xouVEZ9lnU',3,NULL,3);
+
+INSERT INTO PELICULAS VALUES (11,'JOHN WICK 3 2D CAST',STR_TO_DATE('13-06-2019','%d-%m-%Y'),'Apta para mayores de 16 años con reservas','Acción','Keanu Reeves, Halle Berry, Asia Kate Dillon, Jason Mantzoukas, Ian McShane, Laurence Fishburne, Anjelica Huston, Lance Reddick.', 'Luego de los eventos ocurridos en John Wick 2, el protagonista comienza a ser perseguido por todas las mafias que simpatizan con el italiano Santino DAntino a quién John le debía un favor. Con un precio por su cabeza que escaló a 14 millones de dólares, ahora todos los sicarios van por él.', 'Estados Unidos', 158, 0, 'https://youtu.be/4Ul8LTDQDcI',4,NULL,4);
+
+INSERT INTO PELICULAS VALUES (12,'POKEMON 2D CAST',STR_TO_DATE('13-06-2019','%d-%m-%Y'),'Apta para todo público','Acción Ciencia Ficción','Suki Waterhouse, Bill Nighy, Ken Watanabe. Rita Ora, Ryan Reynolds','Película Live-Action del videojuego de Nintendo: Great Detective Pikachu en el cual el icónico personaje de color amarillo se encarga de resolver misterios.', 'Estados Unidos', 127, 0, 'https://youtu.be/V31OIBUzGcs',4,NULL,4);
+
+INSERT INTO PELICULAS VALUES (13,'GARABANDAL',STR_TO_DATE('20-06-2019','%d-%m-%Y'),'Apta para todo público con leyenda','Biográfica', 'Fernando García Linares, Belén Garde García', '8 de junio de 1961. En una pequeña aldea del norte de España, San Sebastián de Garabandal, cuatro niñas afirman haber tenido una aparición de San Miguel Arcángel. Días después, el 2 de julio de 1961, reciben la visita de la Virgen del Carmen. Tras esta primera vez, se siguen más de dos mil encuentros con la celestial Señora. El párroco del pueblo, don Valentín, y el brigada de la Guardia Civil, don Juan Álvarez Seco, se encontrarán súbitamente implicados como protagonistas en un acontecimiento que les desborda, tratando de comprender dónde está la verdad, frente a una jerarquía perpleja, y ante una multitud cada vez más creciente de personas que acuden al pueblo en busca de respuestas.', 'España', 167, 0, 'https://youtu.be/U_v7iwTgT-w',5,NULL,5);
+
+INSERT INTO PELICULAS VALUES (14,'EL ARTICO',STR_TO_DATE('20-06-2019','%d-%m-%Y'),'Desconocido','Drama','Mads Mikkelsen, Maria Thelma Smáradóttir','Un hombre (Mads Mikkelsen) varado en el Ártico está por recibir finalmente su tan aguardado rescate. Sin embargo, tras un trágico accidente pierde esta oportunidad. A partir de este hecho, debe decidir si se queda resguardado en su campamento, donde está relativamente a salvo, o si se embarca en una mortal excursión a través de lo desconocido para salvarse.', 'Islandia', 129, 0,'https://youtu.be/u6pdq0tIytM', 6,NULL,6);
+
+INSERT INTO PELICULAS VALUES (15,'LO QUE FUIMOS',STR_TO_DATE('20-06-2019','%d-%m-%Y'),'Desconocido','Drama Familiar','Robert Forster, Blythe Danner, Josh Lucas, Michael Shannon, Hillary Swank', 'Bridget (Hilary Swank), una chef californiana, se ve obligada a regresar a su ciudad natal cuando su enferma madre Ruth (Blythe Danner), desaparece en medio de una tormenta de nieve. Con su revoltosa hija Emma (Taissa Farmiga) a cuestas, Bridget llega para encontrar a Ruth a salvo pero cada vez más confundida y desorientada. La más reciente excursión de Ruth colma el vaso de su hijo Nicky (Michael Shannon), que cree que ella necesita ser tratada en una clínica especializada, pero su esposo Bert (Robert Forster) insiste en que su lugar es con él, en su hogar, y con la vida que han creado juntos. Bridget lucha con sus propios problemas maritales, su complicada relación con Emma y con la culpa de haber dejado a su familia en Chicago. Mientras Nick la presiona para enviar a Ruth a un asilo y Bert se enfurece cada vez más Bridget intenta encontrar una solución que los haga felices a todos. Luego, la familia enfrenta una nueva e inesperada crisis que la lleva a una situación muy complicada. Una conmovedora mirada a un desgarrador dilema familiar, "What they had" es la primera película de la escritora y directora Elizabeth Chomko, ganadora del prestigioso "Academy Nicholl Fellowship Award" como escritora de guiones.', 'Estados Unidos', 146, 0, 'https://youtu.be/yIOhlN_aWgw',7,NULL,7);
+
 
 
 CREATE TABLE SALAS (
@@ -694,6 +698,8 @@ INSERT INTO BUTACAS VALUES(8,'J',7);
 
 
 
+
+
 CREATE TABLE CARTELERAS(
 FECHA_INICIO DATE NOT NULL,
 FECHA_FIN DATE NOT NULL,
@@ -718,16 +724,15 @@ FOREIGN KEY (ID_SALA) REFERENCES SALAS(ID_SALA),
 FOREIGN KEY (ID_PELICULA) REFERENCES PELICULAS(ID_PELICULA)
 );
 
-INSERT INTO TRANSMITEN VALUES(1,1,'17:30,20:30');
-INSERT INTO TRANSMITEN VALUES(1,8,'15:30,23:30');
-INSERT INTO TRANSMITEN VALUES(2,2,'17:30,20:30,23:30');
-INSERT INTO TRANSMITEN VALUES(3,3,'17:30,20:30,23:30');
-INSERT INTO TRANSMITEN VALUES(4,4,'17:30,20:30,23:30');
-INSERT INTO TRANSMITEN VALUES(5,5,'17:30,20:30,23:30');
-INSERT INTO TRANSMITEN VALUES(6,6,'17:30,20:30,23:30');
-INSERT INTO TRANSMITEN VALUES(7,7,'17:30,20:30,23:30');
+INSERT INTO TRANSMITEN VALUES(1,1,'LS 17:30,20:30 D 20:30');
+INSERT INTO TRANSMITEN VALUES(1,8,'LS 15:30,23:30 D 23:30');
+INSERT INTO TRANSMITEN VALUES(2,2,'LS 17:30,20:30 D 23:30');
+INSERT INTO TRANSMITEN VALUES(3,3,'LS 17:30,20:30 D 23:30');
+INSERT INTO TRANSMITEN VALUES(4,4,'LS 17:30,20:30 D 23:30');
+INSERT INTO TRANSMITEN VALUES(5,5,'LS 17:30,20:30 D 23:30');
+INSERT INTO TRANSMITEN VALUES(6,6,'LS 17:30,20:30 D 23:30');
+INSERT INTO TRANSMITEN VALUES(7,7,'LS 17:30,20:30 D 23:30');
 
-
 
 CREATE TABLE TIENEN(
 FECHA_INICIO DATE NOT NULL,
@@ -770,7 +775,8 @@ FECHA_NAC DATE,
 TELEFONO VARCHAR(50),
 PERSONA_TIPO VARCHAR(50) NOT NULL,
 
-PRIMARY KEY (EMAIL,PERSONA_TIPO)
+
+PRIMARY KEY (EMAIL, PERSONA_TIPO)
 );
 
 INSERT INTO PERSONAS VALUES (41000000,'DNI','Valeria','Cuevas','cnvale1998@gmail.com',STR_TO_DATE('15-07-1998','%d-%m-%Y'),'2664301232','usuario');
@@ -787,16 +793,18 @@ INSERT INTO PERSONAS VALUES (41500000,'DNI','Inalen','Godoy','inag25@gmail.com',
 INSERT INTO PERSONAS VALUES (41000000,'DNI','Valeria','Cuevas','cnvale1998@gmail.com',STR_TO_DATE('15-07-1998','%d-%m-%Y'),'2664301232','suscriptor');
 
 CREATE TABLE USUARIOS (
-EMAIL VARCHAR(50) NOT NULL,
+EMAIL VARCHAR(100) NOT NULL,
 CONTRASENIA VARCHAR(20) NOT NULL,
 CODPOSTAL INT,
-DIRECCION VARCHAR(100),
+DIRECCION VARCHAR(150),
 
 PRIMARY KEY (EMAIL),
 FOREIGN KEY (EMAIL) REFERENCES PERSONAS(EMAIL)
 
 );
 
+INSERT INTO USUARIOS VALUES ('cnvale1998@gmail.com','vale123',5700,'Barrio Amppya mzna: 18 casa: 1');
+INSERT INTO USUARIOS VALUES ('manuelnc53@gmail.com','manu123',5700,'Barrio San Luis 32 mzna: E casa 5');
 
 
 
@@ -807,15 +815,22 @@ DIA VARCHAR(10) NOT NULL,
 PRIMARY KEY (ID_DF)
 );
 
+INSERT INTO DIAS VALUES (0, 'Lunes');
+INSERT INTO DIAS VALUES (1, 'Martes');
+INSERT INTO DIAS VALUES (2, 'Miércoles');
+INSERT INTO DIAS VALUES (3, 'Jueves');
+INSERT INTO DIAS VALUES (4, 'Viernes');
+INSERT INTO DIAS VALUES (5, 'Sábado');
+INSERT INTO DIAS VALUES (6, 'Domingo');
 
 
 CREATE TABLE SUSCRIPTORES(
-EMAIL VARCHAR(50) NOT NULL,
+EMAIL VARCHAR(100) NOT NULL,
 PROFESION VARCHAR(30),
 ACOMPANIANTE VARCHAR(20),
 ID_DF INT,
 HORARIO VARCHAR(20),
-GENERO VARCHAR(30),
+SEXO VARCHAR(30),
 
 
 PRIMARY KEY (EMAIL),
@@ -823,58 +838,94 @@ FOREIGN KEY (EMAIL) REFERENCES PERSONAS(EMAIL),
 FOREIGN KEY (ID_DF) REFERENCES DIAS(ID_DF)
 );
 
+INSERT INTO SUSCRIPTORES VALUES ('inag25@gmail.com', 'Estudiante', 'Amigos', 5, 'Indistinto', 'Femenino');
+INSERT INTO SUSCRIPTORES VALUES ('cnvale1998@gmail.com', 'Estudiante', 'Amigos', 3, 'Indistinto', 'Femenino');
+
+CREATE TABLE EMPRESAS(
+EMAIL VARCHAR(100) NOT NULL,
+NOMBRE VARCHAR (100),
+EMPRESA VARCHAR(100),
+TELEFONO VARCHAR(100),
+CIUDAD VARCHAR(200),
+CONSULTA TEXT,
+
+PRIMARY KEY(EMAIL)
+);
+
+INSERT INTO EMPRESAS VALUES ('pedroltr89@gmail.com', 'Pedro Ticona Ramos', 'Pedro SRL', '2664438565', 'San Luis', 'La empresa Pedro Ticona solicita su publicidad en sus películas.');
+
 
 CREATE TABLE SOLICITANTES (
-EMAIL VARCHAR(50) NOT NULL,
+EMAIL VARCHAR(100) NOT NULL,
 ESTUDIOS VARCHAR(100),
 REFLABORALES TEXT,
 REFPERSONALES TEXT,
 GENERO VARCHAR(2),
-IMAGEN LONGBLOB,
+ARCHIVO LONGBLOB,
 
 PRIMARY KEY (EMAIL),
 FOREIGN KEY (EMAIL) REFERENCES PERSONAS(EMAIL)
 );
 
-
-
-CREATE TABLE TICKETS(
-ID_TICKET INT NOT NULL,
-TOTAL FLOAT,
-IVA FLOAT,
-EMAIL VARCHAR(50) NOT NULL,
-
-PRIMARY KEY (ID_TICKET),
-FOREIGN KEY (EMAIL) REFERENCES USUARIOS(EMAIL)
-);
+INSERT INTO SOLICITANTES VALUES ('dismoi.leo@gmail.com','Universitarios','he trabajado en Mercado Libre','Recomendado por Germán Montejano','M',NULL);
+INSERT INTO SOLICITANTES VALUES ('pedroltr89@gmail.com','Universitarios','he trabajado en Mercado Libre','Recomendado por Germán Montejano','M',NULL);
 
 
 
 CREATE TABLE COMBOS (
 ID_COMBO INT NOT NULL,
+NOMBRE VARCHAR(100) NOT NULL,
 INCLUYE TEXT,
-ID_TICKET INT,
 
-PRIMARY KEY (ID_COMBO),
-FOREIGN KEY (ID_TICKET) REFERENCES TICKETS(ID_TICKET)
+PRIMARY KEY (ID_COMBO)
 );
+
+INSERT INTO COMBOS VALUES (1,'COMBO LITRO ALADDIN','Incluye: 1 Pop Mediano + 1 Vaso Película CON GASEOSA + 1 recarga pop # 1 Pop Mediano + 1 Vaso Película CON GASEOSA + 1 recarga pop $240');
+
+INSERT INTO COMBOS VALUES (2,'COMBO LATA PREMIUM ALADDIN','Incluye: LATA C/VISOR + 2 GASEOSAS # LATA C/VISOR + 2 GASEOSAS = $500');
+
+INSERT INTO COMBOS VALUES (3,'COMBO LITRO PIKACHU','Incluye: 1 Pop Mediano + 1 Vaso Película CON GASEOSA + 1 recarga pop. # 1 Bag Mediano de Pochoclos + 1 Vaso Litro Coleccionable con Gaseosa + 1 Recarga de Pochoclos: $240');
+
+INSERT INTO COMBOS VALUES (4,'COMBO MEDIANO ADVENGERS','Incluye: 1 Pop Mediano + 2 Gaseosas + 1 Llavero Avengers. # 1 Pop Mediano + 2 Gaseosa + 1 Llavero Avengers: $400');
+
+INSERT INTO COMBOS VALUES (5,'COMBO FAMILIAR','Incluye: 2 Baldes Gigantes de pochoclos + 4 gaseosas + 1 cofler block. # 2 Baldes Gigante + 4 Gaseosas + 1 coffler: $390 *En Avalos(Resistencia) y en Altos del Solar(Catamarca), San Luis, Bahía Blanca , La Rioja y el combo se entrega con vasos de gaseosa.');
+
+INSERT INTO COMBOS VALUES (6,'COMBO MAXIMIZADO','Incluye: 1 Balde Gigante de Pochoclos + 2 Gaseosas. # 1 Balde Gigante + 2 Gaseosas: $270 *En Avalos(Resistencia) y en Altos del Solar(Catamarca), San Luis, Bahía Blanca , La Rioja y el combo se entrega con vasos de gaseosa.');
+
+INSERT INTO COMBOS VALUES (7,'COMBO PANCHO','Incluye: 1 Superpancho + 1 gaseosa. # 1 Superpancho + 1 gaseosa : $120 *En Resistencia el producto solo está disponible para Cinemacenter Libertad.');
+
+INSERT INTO COMBOS VALUES (8,'COMBO NACHOS','Incluye: 1 porción de nachos + 1 gaseosa + 1 recarga de queso. # 1 porción de nachos + 1 gaseosa + 1 recarga de queso: $250');
+
+CREATE TABLE TICKETS(
+ID_TICKET INT AUTO_INCREMENT,
+TOTAL FLOAT,
+IVA FLOAT,
+EMAIL VARCHAR(100) NOT NULL,
+ID_COMBO INT,
+PRIMARY KEY (ID_TICKET),
+FOREIGN KEY (EMAIL) REFERENCES USUARIOS(EMAIL),
+FOREIGN KEY (ID_COMBO) REFERENCES COMBOS(ID_COMBO)
+);
+
 
 
 CREATE TABLE BENEFICIOS (
 ID_BENEFICIO INT NOT NULL,
 NOMBRE VARCHAR(30) NOT NULL,
-DESDE DATE,
-HASTA DATE,
-TIPO VARCHAR(20),
+TIPO VARCHAR(100),
 CONDGENERALES TEXT,
 
 PRIMARY KEY (ID_BENEFICIO)
 );
 
+INSERT INTO BENEFICIOS VALUES(1,'Banco Santander Río','2D y 3D','Quienes abonen con su Tarjeta Santander Rio Visa, Visa Electron y American Express de Santander Río, tanto de Crédito o Débito una entrada a precio base adulto recibirán 2 entradas. 2x1 entradas 2D y 3D: Válido todos los días en los complejos adheridos. Tope máximo: Un beneficio por tarjeta, por día y por cliente. Se exceptúan festivales de cine, funciones privadas, avant premieres, funciones especiales y aquellas películas en las cuales los distribuidores no hayan prestado su conformidad expresa con la promoción en cuestión. Consultá complejos adheridos en www.santanderrio.com.ar. No acumulable con otras promociones. No aplica a tarjetas de cuenta básica ni de cuenta gratuita. La promoción excluye tarjetas de crédito Santander Rio Mastercard. Beneficio válido sobre el valor de la entrada general del complejo de cine.');
+
+INSERT INTO BENEFICIOS VALUES(2,'Tarjeta Cencosud','2D y 3D','Abonando con tu tarjeta CENCOSUD a través de Miboleteria.com.ar podés acceder a un beneficio de 2x1 en entradas 2D y 3D todos los días. Beneficios válidos sobre el valor de la entrada general del complejo de cine. Se acepta hasta una promoción por día por persona. Beneficios sujetos a capacidad de sala y a eventuales restricciones por parte de las compañías distribuidoras de películas. No combinable con otras promociones vigentes. En Mar del Plata solo válido en los complejos de Ambassador y Cinema Los Gallegos Shopping. ');
+
 
 
 CREATE TABLE ENTRADAS (
-ID_ENTRADA INT NOT NULL,
+ID_ENTRADA INT AUTO_INCREMENT,
 PRECIO FLOAT,
 FECHA DATE,
 MODOPAGO VARCHAR(10),
@@ -898,6 +949,7 @@ NOMBRE_P VARCHAR(50) NOT NULL,
 PRIMARY KEY (ID_PROVINCIA)
 );
 
+INSERT INTO PROVINCIAS VALUES (1,'San Luis');
 
 
 CREATE TABLE CIUDADES (
@@ -909,12 +961,29 @@ FOREIGN KEY (ID_PROVINCIA) REFERENCES PROVINCIAS(ID_PROVINCIA)
 );
 
 
+
+INSERT INTO CIUDADES VALUES ('San Luis',1);
+
+
+
+
 CREATE TABLE VALIDOS (
 ID_COMBO INT NOT NULL,
 CIUDAD VARCHAR(100) NOT NULL,
 
-PRIMARY KEY(ID_COMBO, CIUDAD)
+PRIMARY KEY(ID_COMBO, CIUDAD),
+FOREIGN KEY (CIUDAD) REFERENCES CIUDADES(CIUDAD)
 );
+
+
+INSERT INTO VALIDOS VALUES (1,'San Luis');
+INSERT INTO VALIDOS VALUES (2,'San Luis');
+INSERT INTO VALIDOS VALUES (3,'San Luis');
+INSERT INTO VALIDOS VALUES (4,'San Luis');
+INSERT INTO VALIDOS VALUES (5,'San Luis');
+INSERT INTO VALIDOS VALUES (6,'San Luis');
+INSERT INTO VALIDOS VALUES (7,'San Luis');
+INSERT INTO VALIDOS VALUES (8,'San Luis');
 
 
 
@@ -922,7 +991,7 @@ CREATE TABLE CONSULTAS(
 ID_CONSULTA INT NOT NULL,
 DETALLE VARCHAR(100),
 MOTIVO VARCHAR(30),
-EMAIL VARCHAR(50) NOT NULL,
+EMAIL VARCHAR(100) NOT NULL,
 
 PRIMARY KEY(ID_CONSULTA),
 FOREIGN KEY (EMAIL) REFERENCES PERSONAS(EMAIL)
@@ -931,4 +1000,18 @@ FOREIGN KEY (EMAIL) REFERENCES PERSONAS(EMAIL)
 
 
 
+CREATE TABLE APLICAN(
+ID_BENEFICIO INT NOT NULL,
+CIUDAD VARCHAR(100) NOT NULL,
+DESDE DATE,
+HASTA DATE,
 
+PRIMARY KEY (ID_BENEFICIO, CIUDAD),
+FOREIGN KEY (ID_BENEFICIO) REFERENCES BENEFICIOS(ID_BENEFICIO),
+FOREIGN KEY (CIUDAD) REFERENCES CIUDADES(CIUDAD)
+);
+
+
+INSERT INTO APLICAN VALUES (1,'San Luis', STR_TO_DATE('01-04-2015','%d-%m-%Y'),STR_TO_DATE('31-12-2019','%d-%m-%Y'));
+
+INSERT INTO APLICAN VALUES(2, 'San Luis',STR_TO_DATE('01-01-2016','%d-%m-%Y'),STR_TO_DATE('30-12-2019','%d-%m-%Y') );

@@ -9,6 +9,7 @@ class CarteleraControllers{
     const { fecha } = req.params;
 
         const cartelera = await pool.query("SELECT * FROM PELICULAS WHERE ID_PELICULA IN (SELECT TIENEN.ID_PELICULA FROM TIENEN WHERE FECHA_FIN=?);",[fecha]);
+        console.log(cartelera);
         res.json(cartelera);
 }
 
