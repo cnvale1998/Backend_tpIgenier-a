@@ -8,7 +8,7 @@ class TransmitenRoutes {
         this.config();
     }
     config() {
-        this.router.get('/API/Transmiten/:id_pelicula', TransmitenControllers_1.transmitenControllers.verTransmision);
+        this.router.get('/API/Transmiten/:id_pelicula', TransmitenControllers_1.transmitenControllers.get);
     }
 }
 const transmitenRoutes = new TransmitenRoutes();
