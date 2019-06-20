@@ -11,6 +11,7 @@ const CombosRoutes_1 = __importDefault(require("./routes/CombosRoutes"));
 const PersonasRoutes_1 = __importDefault(require("./routes/PersonasRoutes"));
 const ProximosEstrenosRoutes_1 = __importDefault(require("./routes/ProximosEstrenosRoutes"));
 const SolicitantesRoutes_1 = __importDefault(require("./routes/SolicitantesRoutes"));
+const ProvinciasRoutes_1 = __importDefault(require("./routes/ProvinciasRoutes"));
 const CiudadesRoutes_1 = __importDefault(require("./routes/CiudadesRoutes"));
 const ConsultasRoutes_1 = __importDefault(require("./routes/ConsultasRoutes"));
 const UsuariosRoutes_1 = __importDefault(require("./routes/UsuariosRoutes"));
@@ -44,6 +45,7 @@ class Servidor {
         this.app.use(MarketingRoutes_1.default);
         this.app.use(TransmitenRoutes_1.default);
         this.app.use(CiudadesRoutes_1.default);
+		this.app.use(ProvinciasRoutes_1.default);
         this.app.use(ConsultasRoutes_1.default);
 		this.app.use(UsuariosRoutes_1.default);
     }
