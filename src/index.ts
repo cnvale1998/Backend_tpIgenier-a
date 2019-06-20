@@ -1,12 +1,13 @@
 import express, {Application } from 'express';
 import entradasRoutes from './routes/EntradasRoutes';
 import carteleraRoutes from './routes/CarteleraRoutes';
+import peliculasRoutes from './routes/PeliculasRoutes';
 import beneficiosRoutes from './routes/BeneficiosRoutes';
 import combosRoutes from './routes/CombosRoutes';
 import personasRoutes from './routes/PersonasRoutes';
 import proximosEstrenosRoutes from './routes/ProximosEstrenosRoutes';
 import solicitantesRoutes from './routes/SolicitantesRoutes';
-
+import ciudadesRoutes from './routes/CiudadesRoutes';//ciudades
 import cors from 'cors';
 import morgan from 'morgan';
 
@@ -37,8 +38,10 @@ class Servidor{
         this.app.use(solicitantesRoutes);
         this.app.use(proximosEstrenosRoutes);
         this.app.use(beneficiosRoutes);
+        this.app.use(ciudadesRoutes);//ciudades
         // agrego lo de marketing
         this.app.use(marketingRoutes);
+        this.app.use(peliculasRoutes);
         this.app.use(transmitenRoutes);
         
 

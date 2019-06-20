@@ -11,7 +11,7 @@ import {transmitenControllers} from '../controllers/TransmitenControllers';
      }
 
      config(){
-        this.router.get('/API/Transmiten/:id_pelicula',transmitenControllers.verTransmision);
+        this.router.get('/API/Transmiten/:id_pelicula',transmitenControllers.get);
         
         
      }
