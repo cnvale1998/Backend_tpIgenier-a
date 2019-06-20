@@ -8,6 +8,7 @@ import proximosEstrenosRoutes from './routes/ProximosEstrenosRoutes';
 import solicitantesRoutes from './routes/SolicitantesRoutes';
 import ciudadesRoutes from './routes/CiudadesRoutes';
 import consultasRoutes from './routes/ConsultasRoutes';
+import usuariosRoutes from './routes/UsuariosRoutes';
 import cors from 'cors';
 import morgan from 'morgan';
 
@@ -40,6 +41,7 @@ class Servidor{
         this.app.use(beneficiosRoutes);
         this.app.use(ciudadesRoutes);
 	    this.app.use(consultasRoutes);
+		this.app.use(usuariosRoutes);
         // agrego lo de marketing
         this.app.use(marketingRoutes);
         this.app.use(transmitenRoutes);

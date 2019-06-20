@@ -9,7 +9,7 @@ public async insertarConsulta(req: Request,res: Response): Promise<void> {
           const result = await pool.query('INSERT INTO CONSULTAS set ?', [req.body]);
           res.json({ message: 'se ha guardado la consulta' });}
         catch(e){
-          res.json({ message: 'ocurrio un error EN consultasController' });
+          res.json({ message: 'ocurrio un error en consultasController' });
         }
       }
 
