@@ -8,7 +8,8 @@ class PersonasRoutes {
         this.config();
     }
     config() {
-        this.router.get('/API/Personas/:fecha', PersonasControllers_1.personasControllers.get);
+        this.router.get('/API/Personas/:email', PersonasControllers_1.personasControllers.get);
+        this.router.put('/API/Personas/', PersonasControllers_1.personasControllers.put);
     }
 }
 const personasRoutes = new PersonasRoutes();

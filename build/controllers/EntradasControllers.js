@@ -16,7 +16,7 @@ class EntradasControllers {
     put(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const result = yield database_1.default.query('INSERT INTO ENTRADAS set ?', [req.body]);
+                const result = yield database_1.default.query('INSERT INTO ENTRADAS(ID_PELICULA,ID_TICKET) set ?', [req.body]);
                 res.json({ message: 'Entrada guardada' });
             }
             catch (e) {

@@ -11,8 +11,8 @@ import {personasControllers} from '../controllers/PersonasControllers';
      }
 
      config(){
-        this.router.get('/API/Personas/:fecha',personasControllers.get);
-        
+        this.router.get('/API/Personas/:email',personasControllers.get);
+        this.router.put('/API/Personas/',personasControllers.put);
         
      }
  }

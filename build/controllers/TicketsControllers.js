@@ -12,14 +12,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class PeliculasControllers {
+class TicketsControllers {
+    put(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const result = yield database_1.default.query('INSERT INTO TICKETS set ?', [req.body]);
+                res.json({ message: 'Entrada guardada' });
+            }
+            catch (e) {
+                res.json({ message: 'Error' });
+            }
+        });
+    }
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id } = req.params;
-            console.log(req.params);
-            const pelicula = yield database_1.default.query("SELECT PELICULAS.ID_PELICULA,PELICULAS.NOMBRE,FECHAESTRENO,CLASIFICACION,GENERO,PROTAGONISTAS,RESENIA,NACIONALIDAD,DURACION,DISPONIBLE,TRAILER,DIRECTORES.NOMBRE,DIRECTORES.APELLIDO,DISTRIBUIDORAS.NOMBRE,HORARIOS FROM PELICULAS,DIRECTORES,DISTRIBUIDORAS,TRANSMITEN WHERE PELICULAS.ID_PELICULA=? AND ID_DIR1=DIRECTORES.ID_DIRECTOR GROUP BY PELICULAS.ID_PELICULA", [id]);
-            res.json(pelicula);
+            const tickets = yield database_1.default.query('SELECT * FROM TICKETS');
+            res.json(tickets);
         });
     }
 }
-exports.peliculasControllers = new PeliculasControllers();
+exports.ticketsControllers = new TicketsControllers();

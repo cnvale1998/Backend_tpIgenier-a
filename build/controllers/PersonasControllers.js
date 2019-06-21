@@ -16,8 +16,19 @@ class PersonasControllers {
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { email } = req.params;
-            const personas = yield database_1.default.query("SELECT * FROM PERSONAS WHERE EMAIL= ?", [email]);
+            const personas = yield database_1.default.query("SELECT COUNT(EMAIL) FROM PERSONAS WHERE EMAIL= ?", [email]);
             res.json(personas);
+        });
+    }
+    put(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const result = yield database_1.default.query('INSERT INTO PERSONAS set ?', [req.body]);
+                res.json({ message: 'Persona guardada' });
+            }
+            catch (e) {
+                res.json({ message: 'Error' });
+            }
         });
     }
 }
