@@ -1,6 +1,7 @@
 import express, {Application } from 'express';
 import entradasRoutes from './routes/EntradasRoutes';
 import carteleraRoutes from './routes/CarteleraRoutes';
+import peliculasRoutes from './routes/PeliculasRoutes';
 import beneficiosRoutes from './routes/BeneficiosRoutes';
 import combosRoutes from './routes/CombosRoutes';
 import personasRoutes from './routes/PersonasRoutes';
@@ -46,6 +47,7 @@ class Servidor{
 		this.app.use(usuariosRoutes);
         // agrego lo de marketing
         this.app.use(marketingRoutes);
+        this.app.use(peliculasRoutes);
         this.app.use(transmitenRoutes);
         
 
