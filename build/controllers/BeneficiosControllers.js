@@ -15,7 +15,7 @@ const database_1 = __importDefault(require("../database"));
 class BeneficiosControllers {
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const beneficios = yield database_1.default.query("SELECT BENEFICIOS.ID_BENEFICIO,NOMBRE,TIPO,CONDGENERALES,DESDE,HASTA FROM BENEFICIOS,APLICAN WHERE CIUDAD='San Luis' GROUP BY NOMBRE;");
+            const beneficios = yield database_1.default.query("SELECT DISTINCT BENEFICIOS.ID_BENEFICIO,NOMBRE,TIPO,CONDGENERALES,DESDE,HASTA FROM BENEFICIOS,APLICAN WHERE CIUDAD='San Luis' AND BENEFICIOS.ID_BENEFICIO=APLICAN.ID_BENEFICIO");
             res.json(beneficios);
         });
     }

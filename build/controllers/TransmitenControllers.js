@@ -17,6 +17,7 @@ class TransmitenControllers {
         return __awaiter(this, void 0, void 0, function* () {
             const { id_pelicula } = req.params;
             const transmision = yield database_1.default.query("SELECT * FROM transmiten WHERE ID_PELICULA = ?; ", [id_pelicula]);
+            console.log(req.params);
             return res.json(transmision);
         });
     }
