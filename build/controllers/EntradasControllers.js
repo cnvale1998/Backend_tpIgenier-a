@@ -18,9 +18,11 @@ class EntradasControllers {
             var valores = { ID_PELICULA: Number, ID_BENEFICIO: Number, PRECIO: Number };
             valores = req.body;
             try {
+
                 var query_ticket = yield database_1.default.query('SELECT MAX(ID_TICKET) AS id FROM TICKETS');
                 var id_ticket = JSON.parse(JSON.stringify(query_ticket));
                 const result = yield database_1.default.query('INSERT INTO ENTRADAS(ID_PELICULA,PRECIO,ID_BENEFICIO, ID_TICKET) VALUES  (?,?,?,?)', [valores.ID_PELICULA, valores.PRECIO, valores.ID_BENEFICIO, id_ticket[0].id]);
+
                 res.json({ message: 'Entrada guardada' });
             }
             catch (e) {

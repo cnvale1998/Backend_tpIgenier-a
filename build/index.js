@@ -22,7 +22,9 @@ const cors_1 = __importDefault(require("cors"));
 const morgan_1 = __importDefault(require("morgan"));
 // parte marketing , lo demas no toque nada 
 const MarketingRoutes_1 = __importDefault(require("./routes/MarketingRoutes"));
+const TicketsRoutes_1 = __importDefault(require("./routes/TicketsRoutes"));
 const TransmitenRoutes_1 = __importDefault(require("./routes/TransmitenRoutes"));
+const SuscriptoresRoutes_1 = __importDefault(require("./routes/SuscriptoresRoutes"));
 class Servidor {
     constructor() {
         this.app = express_1.default();
@@ -50,10 +52,14 @@ class Servidor {
         this.app.use(PeliculasRoutes_1.default);
         this.app.use(TransmitenRoutes_1.default);
 
+
         this.app.use(CiudadesRoutes_1.default);
 		this.app.use(ProvinciasRoutes_1.default);
         this.app.use(ConsultasRoutes_1.default);
 		this.app.use(UsuariosRoutes_1.default);
+
+        this.app.use(TicketsRoutes_1.default);
+        this.app.use(SuscriptoresRoutes_1.default);
 
     }
     start() {

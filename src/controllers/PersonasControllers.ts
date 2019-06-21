@@ -7,7 +7,7 @@ class PersonasControllers{
   
   public async get(req: Request, res: Response): Promise<void> {
          const { email } = req.params;
-        const personas = await pool.query("SELECT * FROM PERSONAS WHERE EMAIL= ?",[email]);
+        const personas = await pool.query("SELECT COUNT(EMAIL) FROM PERSONAS WHERE EMAIL= ?",[email]);
         res.json(personas);
 }
 public async insertarPersona(req: Request,res: Response): Promise<void> {
@@ -20,6 +20,15 @@ public async insertarPersona(req: Request,res: Response): Promise<void> {
       }
 
 //INSERT IGNORE INTO  `personas` (`DOC`, `TIPO_DOC`, `NOMBRE`, `APELLIDO`, `EMAIL`, `FECHA_NAC`, `TELEFONO`, `PERSONA_TIPO`) VALUES ('44444444', 'DNI', 'mama', 'mama', 'inaleng25@gmail.com', '2019-06-11', '22222', 'CONTACTO');
+
+public async put (req: Request,res: Response): Promise<void> {
+  try{
+    const result = await pool.query('INSERT INTO PERSONAS set ?', [req.body]);
+    res.json({ message: 'Persona guardada' });}
+  catch(e){
+    res.json({ message: 'Error' });
+  }
+}
 
      
   

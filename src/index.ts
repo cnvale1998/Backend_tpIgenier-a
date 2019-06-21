@@ -16,7 +16,9 @@ import morgan from 'morgan';
 
 // parte marketing , lo demas no toque nada 
 import marketingRoutes from './routes/MarketingRoutes';
+import ticketsRoutes from './routes/TicketsRoutes';
 import transmitenRoutes from './routes/TransmitenRoutes';
+import suscriptoresRoutes from './routes/SuscriptoresRoutes';
 class Servidor{
 
     public app:Application;
@@ -49,7 +51,8 @@ class Servidor{
         this.app.use(marketingRoutes);
         this.app.use(peliculasRoutes);
         this.app.use(transmitenRoutes);
-        
+        this.app.use(ticketsRoutes);
+        this.app.use(suscriptoresRoutes);
 
     } 
     start(){

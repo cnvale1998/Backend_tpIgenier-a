@@ -12,16 +12,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class TransmitenControllers {
+class TicketsControllers {
+    put(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const result = yield database_1.default.query('INSERT INTO TICKETS set ?', [req.body]);
+                res.json({ message: 'Entrada guardada' });
+            }
+            catch (e) {
+                res.json({ message: 'Error' });
+            }
+        });
+    }
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id_pelicula } = req.params;
-            const transmision = yield database_1.default.query("SELECT * FROM transmiten WHERE ID_PELICULA = ?; ", [id_pelicula]);
-			console.log(req.params);
-
-            return res.json(transmision);
-
+            const tickets = yield database_1.default.query('SELECT * FROM TICKETS');
+            res.json(tickets);
         });
     }
 }
-exports.transmitenControllers = new TransmitenControllers();
+exports.ticketsControllers = new TicketsControllers();

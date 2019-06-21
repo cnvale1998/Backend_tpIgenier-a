@@ -11,8 +11,13 @@ import {personasControllers} from '../controllers/PersonasControllers';
      }
 
      config(){
-        this.router.get('/API/Personas/:fecha',personasControllers.get);
+
+    
         this.router.post('/API/Personas/', consultasControllers.insertarPersona);
+
+        this.router.get('/API/Personas/:email',personasControllers.get);
+        this.router.put('/API/Personas/',personasControllers.put);
+
         
      }
  }
