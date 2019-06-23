@@ -29,6 +29,9 @@ class PersonasControllers {
             }
             catch (e) {
                 res.json({ message: 'ocurrio un error' });
+			}
+		});
+	}
 
     put(req, res) {
         return __awaiter(this, void 0, void 0, function* () {

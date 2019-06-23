@@ -16,6 +16,17 @@ class UsuariosControllers{
         const usuario = await pool.query("SELECT COUNT(EMAIL) as contador FROM USUARIOS WHERE EMAIL = ?",[email]);
         res.json(usuario);
     }
+    public async obtenerUsuario(req: Request, res: Response): Promise<void> {
+        try{
+            var datos = { EMAIL: String, CONTRASENIA: String };
+            datos = req.body;
+            const usuario = await pool.query("SELECT per.*  FROM USUARIOS as us,PERSONAS as per WHERE us.EMAIL = ? and us.CONTRASENIA=? and us.EMAIL=per.EMAIL", [datos.EMAIL,datos.CONTRASENIA]);
+            res.json(usuario);
+        }                        
+        catch(e){
+          res.json({ message: 'Ocurrio un error en usuariosController' });
+        }
+    }
 
   
 }

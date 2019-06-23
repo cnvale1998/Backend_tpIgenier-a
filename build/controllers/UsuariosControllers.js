@@ -32,5 +32,13 @@ class UsuariosControllers {
             res.json(usuarios);
         });
     }
+	obtenerUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+			var datos = { EMAIL: String, CONTRASENIA: String };
+            datos = req.body;
+            const usuario = yield database_1.default.query("SELECT per.*  FROM USUARIOS as us,PERSONAS as per WHERE us.EMAIL = ? and us.CONTRASENIA=? and us.EMAIL=per.EMAIL", [datos.EMAIL,datos.CONTRASENIA]);
+            res.json(usuario);
+        });
+    }
 }
 exports.usuariosControllers = new UsuariosControllers();

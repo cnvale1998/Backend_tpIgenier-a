@@ -13,6 +13,7 @@ import {usuariosControllers} from '../controllers/UsuariosControllers';
      config(){
         this.router.post('/API/Usuarios/', usuariosControllers.insertarUsuario);
         this.router.get('/API/Usuarios/:email',usuariosControllers.usuarioExiste);
+        this.router.post('/API/USUARIOS/getUser/', UsuariosControllers_1.usuariosControllers.obtenerUsuario);
      }
  }
 
