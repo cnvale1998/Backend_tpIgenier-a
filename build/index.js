@@ -13,6 +13,7 @@ const PersonasRoutes_1 = __importDefault(require("./routes/PersonasRoutes"));
 const ProximosEstrenosRoutes_1 = __importDefault(require("./routes/ProximosEstrenosRoutes"));
 const SolicitantesRoutes_1 = __importDefault(require("./routes/SolicitantesRoutes"));
 const CiudadesRoutes_1 = __importDefault(require("./routes/CiudadesRoutes")); //ciudades
+const ParticipantesRoutes_1 = __importDefault(require("./routes/ParticipantesRoutes"));
 const cors_1 = __importDefault(require("cors"));
 const morgan_1 = __importDefault(require("morgan"));
 // parte marketing , lo demas no toque nada 
@@ -48,6 +49,7 @@ class Servidor {
         this.app.use(TransmitenRoutes_1.default);
         this.app.use(TicketsRoutes_1.default);
         this.app.use(SuscriptoresRoutes_1.default);
+        this.app.use(ParticipantesRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

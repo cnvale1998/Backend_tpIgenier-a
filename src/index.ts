@@ -8,6 +8,7 @@ import personasRoutes from './routes/PersonasRoutes';
 import proximosEstrenosRoutes from './routes/ProximosEstrenosRoutes';
 import solicitantesRoutes from './routes/SolicitantesRoutes';
 import ciudadesRoutes from './routes/CiudadesRoutes';//ciudades
+import participantesRoutes from './routes/ParticipantesRoutes';
 import cors from 'cors';
 import morgan from 'morgan';
 
@@ -47,6 +48,7 @@ class Servidor{
         this.app.use(transmitenRoutes);
         this.app.use(ticketsRoutes);
         this.app.use(suscriptoresRoutes);
+        this.app.use(participantesRoutes);
 
     } 
     start(){
