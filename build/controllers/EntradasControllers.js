@@ -15,12 +15,17 @@ const database_1 = __importDefault(require("../database"));
 class EntradasControllers {
     put(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            var valores = { ID_PELICULA: Number, ID_BENEFICIO: Number, PRECIO: Number };
+            valores = req.body;
             try {
-                const result = yield database_1.default.query('INSERT INTO ENTRADAS(ID_PELICULA,ID_TICKET) set ?', [req.body]);
+                var query_ticket = yield database_1.default.query('SELECT MAX(ID_TICKET) AS id FROM TICKETS');
+                var id_ticket = JSON.parse(JSON.stringify(query_ticket));
+                const result = yield database_1.default.query('INSERT INTO ENTRADAS(ID_PELICULA,PRECIO,ID_BENEFICIO, ID_TICKET) VALUES  (?,?,?,?)', [valores.ID_PELICULA, valores.PRECIO, valores.ID_BENEFICIO, id_ticket[0].id]);
                 res.json({ message: 'Entrada guardada' });
             }
             catch (e) {
                 res.json({ message: 'Error' });
+                console.log(e);
             }
         });
     }

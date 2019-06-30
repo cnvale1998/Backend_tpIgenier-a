@@ -12,33 +12,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class SuscriptoresControllers {
-    post(req, res) {
+class UsuariosControllers {
+    insertarUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const result = yield database_1.default.query('INSERT INTO SUSCRIPTORES set ?', [req.body]);
-                res.json({ message: 'Suscriptor guardado' });
+                const result = yield database_1.default.query('INSERT INTO USUARIOS set ?', [req.body]);
+                res.json({ message: 'Se ha registrado un nuevo usuario' });
             }
             catch (e) {
-                res.json({ message: 'Error' });
+                res.json({ message: 'Ocurrio un error en usuariosController' });
             }
         });
     }
-    get(req, res) {
+    usuarioExiste(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { email } = req.params;
-            const suscriptores = yield database_1.default.query("SELECT COUNT(EMAIL) FROM SUSCRIPTORES WHERE EMAIL= ?", [email]);
-            console.log(suscriptores);
-            res.json(suscriptores);
+            const usuario = yield database_1.default.query("SELECT COUNT(EMAIL) as contador FROM USUARIOS WHERE EMAIL = ?", [email]);
+            res.json(usuario);
         });
     }
-    delete(req, res) {
+    obtenerUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { email } = req.params;
-            const suscriptores = yield database_1.default.query("DELETE FROM SUSCRIPTORES WHERE EMAIL= ?", [email]);
-            console.log(suscriptores);
-            res.json(suscriptores);
+            try {
+                var datos = { EMAIL: String, CONTRASENIA: String };
+                datos = req.body;
+                const usuario = yield database_1.default.query("SELECT per.*  FROM USUARIOS as us,PERSONAS as per WHERE us.EMAIL = ? and us.CONTRASENIA=? and us.EMAIL=per.EMAIL", [datos.EMAIL, datos.CONTRASENIA]);
+                res.json(usuario);
+            }
+            catch (e) {
+                res.json({ message: 'Ocurrio un error en usuariosController' });
+            }
         });
     }
 }
-exports.suscriptoresControllers = new SuscriptoresControllers();
+exports.usuariosControllers = new UsuariosControllers();

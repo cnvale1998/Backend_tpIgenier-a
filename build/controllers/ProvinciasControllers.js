@@ -12,12 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class BeneficiosControllers {
+class ProvinciasControllers {
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const beneficios = yield database_1.default.query("SELECT DISTINCT BENEFICIOS.ID_BENEFICIO,NOMBRE,TIPO,CONDGENERALES,DESDE,HASTA FROM BENEFICIOS,APLICAN WHERE CIUDAD='San Luis' AND BENEFICIOS.ID_BENEFICIO=APLICAN.ID_BENEFICIO");
-            res.json(beneficios);
+            const provincias = yield database_1.default.query("SELECT * FROM provincias");
+            res.json(provincias);
         });
     }
 }
-exports.beneficiosControllers = new BeneficiosControllers();
+exports.provinciasControllers = new ProvinciasControllers();

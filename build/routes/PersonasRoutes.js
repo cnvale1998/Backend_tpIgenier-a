@@ -8,8 +8,10 @@ class PersonasRoutes {
         this.config();
     }
     config() {
+        this.router.post('/API/Personas/', PersonasControllers_1.personasControllers.insertarPersona);
         this.router.get('/API/Personas/:email', PersonasControllers_1.personasControllers.get);
         this.router.put('/API/Personas/', PersonasControllers_1.personasControllers.put);
+        this.router.delete('/API/Personas/:email', PersonasControllers_1.personasControllers.delete);
     }
 }
 const personasRoutes = new PersonasRoutes();

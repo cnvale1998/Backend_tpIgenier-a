@@ -12,12 +12,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class BeneficiosControllers {
-    get(req, res) {
+class ConsultasControllers {
+    insertarConsulta(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const beneficios = yield database_1.default.query("SELECT DISTINCT BENEFICIOS.ID_BENEFICIO,NOMBRE,TIPO,CONDGENERALES,DESDE,HASTA FROM BENEFICIOS,APLICAN WHERE CIUDAD='San Luis' AND BENEFICIOS.ID_BENEFICIO=APLICAN.ID_BENEFICIO");
-            res.json(beneficios);
+            try {
+                const result = yield database_1.default.query('INSERT INTO CONSULTAS set ?', [req.body]);
+                res.json({ message: 'se ha guardado la consulta' });
+            }
+            catch (e) {
+                res.json({ message: 'ocurrio un error en consultasController' });
+            }
         });
     }
 }
-exports.beneficiosControllers = new BeneficiosControllers();
+exports.consultasControllers = new ConsultasControllers();

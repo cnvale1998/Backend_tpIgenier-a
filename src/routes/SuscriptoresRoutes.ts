@@ -11,7 +11,9 @@ import {suscriptoresControllers} from '../controllers/SuscriptoresControllers';
      }
 
      config(){
-        this.router.put('/API/Suscriptores/', suscriptoresControllers.put);
+        this.router.post('/API/Suscriptores/', suscriptoresControllers.post);
+        this.router.get('/API/Suscriptores/:email', suscriptoresControllers.get);
+        this.router.delete('/API/Suscriptores/:email', suscriptoresControllers.delete);
         
         
      }
