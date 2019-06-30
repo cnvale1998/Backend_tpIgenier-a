@@ -9,6 +9,7 @@ class ParticipantesRoutes {
     }
     config() {
         this.router.post('/API/Participantes/', ParticipantesControllers_1.participantesControllers.insertarParticipante);
+        this.router.get('/API/Participantes/', ParticipantesControllers_1.participantesControllers.getParticipante);
     }
 }
 const participantesRoutes = new ParticipantesRoutes();
