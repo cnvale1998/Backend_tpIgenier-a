@@ -15,7 +15,7 @@ const database_1 = __importDefault(require("../database"));
 class ProvinciasControllers {
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const provincias = yield database_1.default.query("SELECT * FROM PROVINCIAS");
+            const provincias = yield database_1.default.query("SELECT * FROM provincias");
             res.json(provincias);
         });
     }

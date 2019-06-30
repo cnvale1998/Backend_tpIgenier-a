@@ -8,9 +8,9 @@ class UsuariosRoutes {
         this.config();
     }
     config() {
-		this.router.post('/API/USUARIOS/', UsuariosControllers_1.usuariosControllers.insertarUsuario);
-		this.router.get('/API/USUARIOS/:email', UsuariosControllers_1.usuariosControllers.usuarioExiste);
-		this.router.post('/API/USUARIOS/getUser/', UsuariosControllers_1.usuariosControllers.obtenerUsuario);
+        this.router.post('/API/Usuarios/', UsuariosControllers_1.usuariosControllers.insertarUsuario);
+        this.router.get('/API/Usuarios/:email', UsuariosControllers_1.usuariosControllers.usuarioExiste);
+        this.router.post('/API/USUARIOS/getUser/', UsuariosControllers_1.usuariosControllers.obtenerUsuario);
     }
 }
 const usuariosRoutes = new UsuariosRoutes();

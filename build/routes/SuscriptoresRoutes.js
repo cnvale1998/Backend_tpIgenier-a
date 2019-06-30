@@ -8,7 +8,9 @@ class SuscriptoresRoutes {
         this.config();
     }
     config() {
-        this.router.put('/API/Suscriptores/', SuscriptoresControllers_1.suscriptoresControllers.put);
+        this.router.post('/API/Suscriptores/', SuscriptoresControllers_1.suscriptoresControllers.post);
+        this.router.get('/API/Suscriptores/:email', SuscriptoresControllers_1.suscriptoresControllers.get);
+        this.router.delete('/API/Suscriptores/:email', SuscriptoresControllers_1.suscriptoresControllers.delete);
     }
 }
 const suscriptoresRoutes = new SuscriptoresRoutes();
