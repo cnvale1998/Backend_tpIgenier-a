@@ -16,7 +16,8 @@ class CarteleraControllers {
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { fecha } = req.params;
-            const cartelera = yield database_1.default.query("SELECT * FROM PELICULAS WHERE ID_PELICULA IN (SELECT TIENEN.ID_PELICULA FROM TIENEN WHERE FECHA_FIN= ?)", [fecha]);
+            const cartelera = yield database_1.default.query("SELECT * FROM PELICULAS WHERE ID_PELICULA IN (SELECT TIENEN.ID_PELICULA FROM TIENEN WHERE FECHA_FIN=?);", [fecha]);
+            console.log(cartelera);
             res.json(cartelera);
         });
     }

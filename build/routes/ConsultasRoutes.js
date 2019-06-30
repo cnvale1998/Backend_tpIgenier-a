@@ -8,7 +8,7 @@ class ConsultasRoutes {
         this.config();
     }
     config() {
-		this.router.post('/API/Consultas/', ConsultasControllers_1.consultasControllers.insertarConsulta);
+        this.router.post('/API/Consultas/', ConsultasControllers_1.consultasControllers.insertarConsulta);
     }
 }
 const consultasRoutes = new ConsultasRoutes();
