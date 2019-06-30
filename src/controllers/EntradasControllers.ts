@@ -5,13 +5,14 @@ class EntradasControllers{
 
 
   public async put (req: Request,res: Response): Promise<void> {
-    var  valores={ID_PELICULA:Number,ID_BENEFICIO: Number, PRECIO: Number }; 
+    var  valores={ID_PELICULA:Number,ID_BENEFICIO: Number, PRECIO: Number, FECHA:Date, TOTAL:Number, ID_COMBO:Number }; 
     valores= req.body;
     
         try{
+          var ticket=await pool.query('INSERT INTO TICKETS(TOTAL, ID_COMBO) VALUES (?,?)',[valores.TOTAL,valores.ID_COMBO]);
           var query_ticket = await pool.query('SELECT MAX(ID_TICKET) AS id FROM TICKETS');
           var id_ticket = JSON.parse(JSON.stringify(query_ticket));
-          const result = await pool.query('INSERT INTO ENTRADAS(ID_PELICULA,PRECIO,ID_BENEFICIO, ID_TICKET) VALUES  (?,?,?,?)', [valores.ID_PELICULA,valores.PRECIO,valores.ID_BENEFICIO,id_ticket[0].id]);
+          const result = await pool.query('INSERT INTO ENTRADAS(ID_PELICULA,PRECIO,ID_BENEFICIO, ID_TICKET, FECHA) VALUES  (?,?,?,?,?)', [valores.ID_PELICULA,valores.PRECIO,valores.ID_BENEFICIO,id_ticket[0].id,valores.FECHA]);
           res.json({ message: 'Entrada guardada' });}
         catch(e){
           res.json({ message: 'Error' });
