@@ -40,5 +40,35 @@ class UsuariosControllers {
             res.json(usuario);
         });
     }
+	
+		updatePass(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+				var datos = {CONTRASENIA:String, CONTRASENIA_ANT:String, EMAIL:String};
+			
+			datos = req.body;
+			const result = yield database_1.default.query("UPDATE `usuarios` SET `CONTRASENIA` = ? WHERE `usuarios`.`EMAIL` = ? AND `usuarios`.`CONTRASENIA`= ?",[datos.CONTRASENIA,datos.EMAIL, datos.CONTRASENIA_ANT]);
+				
+              res.json({ message: 'Se cambio la contraseña exitosamente' });
+            }
+            catch (e) {
+                res.json({ message: 'Ocurrio un error en usuariosController' });
+            }
+        });}
+		/*updateMail(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+				 var datos = {EMAIL:String, DOC:String,EMAIL_ANT:String};
+			
+			datos = req.body;
+			 const result = yield database_1.default.query("UPDATE `usuarios` SET `usuarios`.`EMAIL`= ? WHERE `usuarios`.`EMAIL` = ?",[datos.EMAIL,datos.EMAIL_ANT]);
+         	 //const result = yield database_1.default.query("UPDATE `personas` SET `personas`.`EMAIL` = ? WHERE `personas`.`EMAIL` = ? and `personas`.`PERSONA_TIPO`='usuario' ",[datos.EMAIL,datos.EMAIL_ANT]);
+       	
+		res.json({ message: 'Se cambio el correo exitosamente' });
+            }
+            catch (e) {
+                res.json({ message: 'Ocurrio un error en usuariosController' });
+            }
+        });}*/
 }
 exports.usuariosControllers = new UsuariosControllers();
