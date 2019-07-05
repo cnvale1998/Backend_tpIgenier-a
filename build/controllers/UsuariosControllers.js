@@ -13,8 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
 class UsuariosControllers {
-    
-	insertarUsuario(req, res) {
+    insertarUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const result = yield database_1.default.query('INSERT INTO USUARIOS set ?', [req.body]);
@@ -25,19 +24,24 @@ class UsuariosControllers {
             }
         });
     }
-	usuarioExiste(req, res) {
+    usuarioExiste(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { email } = req.params;
-            const usuarios = yield database_1.default.query("SELECT COUNT(EMAIL) as contador FROM USUARIOS WHERE EMAIL = ?", [email]);
-            res.json(usuarios);
+            const usuario = yield database_1.default.query("SELECT COUNT(EMAIL) as contador FROM USUARIOS WHERE EMAIL = ?", [email]);
+            res.json(usuario);
         });
     }
-	obtenerUsuario(req, res) {
+    obtenerUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-			var datos = { EMAIL: String, CONTRASENIA: String };
-            datos = req.body;
-            const usuario = yield database_1.default.query("SELECT per.*  FROM USUARIOS as us,PERSONAS as per WHERE us.EMAIL = ? and us.CONTRASENIA=? and us.EMAIL=per.EMAIL", [datos.EMAIL,datos.CONTRASENIA]);
-            res.json(usuario);
+            try {
+                var datos = { EMAIL: String, CONTRASENIA: String };
+                datos = req.body;
+                const usuario = yield database_1.default.query("SELECT per.*  FROM USUARIOS as us,PERSONAS as per WHERE us.EMAIL = ? and us.CONTRASENIA=? and us.EMAIL=per.EMAIL", [datos.EMAIL, datos.CONTRASENIA]);
+                res.json(usuario);
+            }
+            catch (e) {
+                res.json({ message: 'Ocurrio un error en usuariosController' });
+            }
         });
     }
 	

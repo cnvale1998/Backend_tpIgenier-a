@@ -30,6 +30,14 @@ public async put (req: Request,res: Response): Promise<void> {
   }
 }
 
+public async delete(req: Request, res: Response): Promise<void> {
+  const { email } = req.params;
+  const resultado = await pool.query("DELETE FROM PERSONAS WHERE EMAIL= ?",[email]);
+  res.json(resultado);
+}
+
+
+
      
   
 }

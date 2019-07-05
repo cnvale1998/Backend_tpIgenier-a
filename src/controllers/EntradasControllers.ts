@@ -6,6 +6,7 @@ class EntradasControllers{
 
   public async put (req: Request,res: Response): Promise<void> {
     var  valores={ID_PELICULA:Number,ID_BENEFICIO: Number, PRECIO: Number, FECHA:Date, TOTAL:Number, ID_COMBO:Number, EMAIL: String }; 
+   
     valores= req.body;
     
         try{

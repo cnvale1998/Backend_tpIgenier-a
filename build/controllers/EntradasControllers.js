@@ -19,6 +19,7 @@ class EntradasControllers {
             valores = req.body;
             try {
 
+
                 var ticket = yield database_1.default.query('INSERT INTO TICKETS(TOTAL, ID_COMBO, EMAIL) VALUES (?,?,?)', [valores.TOTAL, valores.ID_COMBO, valores.EMAIL]);
                 var query_ticket = yield database_1.default.query('SELECT MAX(ID_TICKET) AS id FROM TICKETS');
                 var id_ticket = JSON.parse(JSON.stringify(query_ticket));
