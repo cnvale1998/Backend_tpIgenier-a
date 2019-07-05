@@ -23,7 +23,8 @@ class ParticipantesControllers {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const result = yield database_1.default.query('INSERT INTO participantes set ?', [req.body]);
-                req.body.json({});
+                console.log("inserto particip");
+				req.body.json({});
                 res.json({ message: 'se ha guardado el participante' });
             }
             catch (e) {
