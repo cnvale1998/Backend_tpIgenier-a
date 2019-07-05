@@ -7,15 +7,11 @@ import combosRoutes from './routes/CombosRoutes';
 import personasRoutes from './routes/PersonasRoutes';
 import proximosEstrenosRoutes from './routes/ProximosEstrenosRoutes';
 import solicitantesRoutes from './routes/SolicitantesRoutes';
-<<<<<<< HEAD
 import ciudadesRoutes from './routes/CiudadesRoutes';//ciudades
 import participantesRoutes from './routes/ParticipantesRoutes';
-=======
-import ciudadesRoutes from './routes/CiudadesRoutes';
 import provinciasRoutes from './routes/ProvinciasRoutes';
 import consultasRoutes from './routes/ConsultasRoutes';
 import usuariosRoutes from './routes/UsuariosRoutes';
->>>>>>> origin/vale
 import cors from 'cors';
 import morgan from 'morgan';
 

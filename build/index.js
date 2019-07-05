@@ -12,15 +12,11 @@ const CombosRoutes_1 = __importDefault(require("./routes/CombosRoutes"));
 const PersonasRoutes_1 = __importDefault(require("./routes/PersonasRoutes"));
 const ProximosEstrenosRoutes_1 = __importDefault(require("./routes/ProximosEstrenosRoutes"));
 const SolicitantesRoutes_1 = __importDefault(require("./routes/SolicitantesRoutes"));
-<<<<<<< HEAD
 const CiudadesRoutes_1 = __importDefault(require("./routes/CiudadesRoutes")); //ciudades
 const ParticipantesRoutes_1 = __importDefault(require("./routes/ParticipantesRoutes"));
-=======
-const CiudadesRoutes_1 = __importDefault(require("./routes/CiudadesRoutes"));
 const ProvinciasRoutes_1 = __importDefault(require("./routes/ProvinciasRoutes"));
 const ConsultasRoutes_1 = __importDefault(require("./routes/ConsultasRoutes"));
 const UsuariosRoutes_1 = __importDefault(require("./routes/UsuariosRoutes"));
->>>>>>> origin/vale
 const cors_1 = __importDefault(require("cors"));
 const morgan_1 = __importDefault(require("morgan"));
 // parte marketing , lo demas no toque nada 

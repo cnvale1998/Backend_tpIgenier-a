@@ -36,7 +36,6 @@ class SuscriptoresControllers {
         return __awaiter(this, void 0, void 0, function* () {
             const { email } = req.params;
             const suscriptores = yield database_1.default.query("DELETE FROM SUSCRIPTORES WHERE EMAIL= ?", [email]);
-            console.log(suscriptores);
             res.json(suscriptores);
         });
     }

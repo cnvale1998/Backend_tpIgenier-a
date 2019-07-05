@@ -14,9 +14,11 @@ class ParticipantesControllers{
     
         try{
           const result = await pool.query('INSERT INTO participantes set ?', [req.body]);
+          console.log("inserto participante");
           req.body.json({});
           res.json({ message: 'se ha guardado el participante' });}
         catch(e){ 
+          console.log(e);
           res.json({ message: 'ocurrio un error lala' });
         }
       }
