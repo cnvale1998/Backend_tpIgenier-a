@@ -12,7 +12,7 @@ import {participantesControllers} from '../controllers/ParticipantesControllers'
      config(){
         this.router.post('/API/Participantes/', participantesControllers.insertarParticipante);
 
-        this.router.get('/API/Participantes/',participantesControllers.getParticipante);
+        this.router.get('/API/Participantes/:email',participantesControllers.getParticipante);
            
          
      }
