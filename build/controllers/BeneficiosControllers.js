@@ -19,5 +19,20 @@ class BeneficiosControllers {
             res.json(beneficios);
         });
     }
+	 getBenefEntrada(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+			const { tipo } = req.params;
+			
+			var cadena;
+			if(tipo==2){
+				cadena="SELECT DISTINCT BENEFICIOS.ID_BENEFICIO,NOMBRE,SUBSTR(BENEFICIOS.COSTO,1,LOCATE('-',BENEFICIOS.COSTO)-1) `COSTO` FROM BENEFICIOS,APLICAN WHERE (CIUDAD='San Luis' AND BENEFICIOS.ID_BENEFICIO=APLICAN.ID_BENEFICIO) OR BENEFICIOS.ID_BENEFICIO=0";
+			}
+			else{
+				cadena="SELECT DISTINCT BENEFICIOS.ID_BENEFICIO,NOMBRE,SUBSTR(BENEFICIOS.COSTO,LOCATE('-',BENEFICIOS.COSTO)+1) `COSTO` FROM BENEFICIOS,APLICAN WHERE (CIUDAD='San Luis' AND BENEFICIOS.ID_BENEFICIO=APLICAN.ID_BENEFICIO) OR BENEFICIOS.ID_BENEFICIO=0";
+			}
+			const beneficios = yield database_1.default.query(cadena);
+			res.json(beneficios);
+        });
+    }
 }
 exports.beneficiosControllers = new BeneficiosControllers();

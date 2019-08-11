@@ -12,6 +12,7 @@ import {entradasControllers} from '../controllers/EntradasControllers';
 
      config(){
         this.router.put('/API/Entradas/',entradasControllers.put);
+        this.router.post('/API/Entradas/getButacasEntrada/',entradasControllers.getButacasEntrada);
         
         
      }
