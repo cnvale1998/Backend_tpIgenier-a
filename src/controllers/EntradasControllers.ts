@@ -5,13 +5,18 @@ class EntradasControllers{
 
 
   public async put (req: Request,res: Response): Promise<void> {
-    var  valores={ID_PELICULA:Number,ID_BENEFICIO: Number, PRECIO: Number, FECHA:Date, TOTAL:Number, ID_COMBO:Number, EMAIL: String ,MODOPAGO: String,ID_CIUDAD:String}; 
-   
-    valores= req.body;
-    
+    var valores = { ID_PELICULA:Number, ID_BENEFICIO: Number, PRECIO: Number, FECHA: Date, TOTAL: Number, ID_COMBO: Number, EMAIL: String ,MODOPAGO: String,ID_CIUDAD:String ,BUTACAS:[] , CANT_COMBO: Number};
+	valores= req.body;
+        
         try{
-         
-           var ticket = await pool.query('INSERT INTO TICKETS(TOTAL, ID_COMBO, EMAIL) VALUES (?,?,?)', [valores.TOTAL, valores.ID_COMBO, valores.EMAIL]);
+            var combo;
+            if(valores.ID_COMBO==0){
+                    combo=null;
+            }
+            else{
+                    combo=valores.ID_COMBO;
+            }
+           var ticket = await pool.query('INSERT INTO TICKETS(TOTAL, ID_COMBO,CANT_COMBO, EMAIL) VALUES (?,?,?,?)', [valores.TOTAL, combo,valores.CANT_COMBO, valores.EMAIL]);
             var query_ticket = await pool.query('SELECT MAX(ID_TICKET) AS id FROM TICKETS');
             var id_ticket = JSON.parse(JSON.stringify(query_ticket));
 
@@ -19,6 +24,7 @@ class EntradasControllers{
             var query_entrada = await pool.query('SELECT MAX(ID_ENTRADA) AS id FROM ENTRADAS');
             var id_entrada = JSON.parse(JSON.stringify(query_ticket));
 
+			
             for(var i=0; i<valores.BUTACAS.length; i++){
                     const result =  await pool.query("INSERT INTO `butaca_entrada` (`ID`, `ID_ENTRADA`, `ID_BUTACA`) VALUES (NULL, ?,(SELECT ID FROM `butacas` WHERE HILERA=? and NUMERO=?));",[id_entrada[0].id , valores.BUTACAS[i]['fila'] , valores.BUTACAS[i]['butaca'] ]);
 
