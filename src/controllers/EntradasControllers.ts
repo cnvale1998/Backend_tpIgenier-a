@@ -22,7 +22,7 @@ class EntradasControllers{
 
             const result =  await pool.query("INSERT INTO ENTRADAS(ID_PELICULA,PRECIO,ID_BENEFICIO, ID_TICKET, FECHA, MODOPAGO,ID_CIUDAD) VALUES  (?,?,?,?,?,?,?)", [valores.ID_PELICULA,valores.PRECIO,valores.ID_BENEFICIO,id_ticket[0].id,valores.FECHA, valores.MODOPAGO,valores.ID_CIUDAD]);
             var query_entrada = await pool.query('SELECT MAX(ID_ENTRADA) AS id FROM ENTRADAS');
-            var id_entrada = JSON.parse(JSON.stringify(query_ticket));
+            var id_entrada = JSON.parse(JSON.stringify(query_entrada));
 
 			
             for(var i=0; i<valores.BUTACAS.length; i++){
