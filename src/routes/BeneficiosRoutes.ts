@@ -12,7 +12,7 @@ import {beneficiosControllers} from '../controllers/BeneficiosControllers';
 
      config(){
         this.router.get('/API/Beneficios/',beneficiosControllers.get);
-        this.router.get('/API/Beneficios/getBenefEntrada/:tipo',beneficiosControllers.getBenefEntrada);
+	this.router.post('/API/Beneficios/getBenefEntrada/',beneficiosControllers.getBenefEntrada);
         
         
      }

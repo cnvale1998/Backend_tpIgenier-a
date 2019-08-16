@@ -9,6 +9,7 @@ class EntradasRoutes {
     }
     config() {
         this.router.put('/API/Entradas/', EntradasControllers_1.entradasControllers.put);
+		this.router.post('/API/Entradas/getButacasEntrada/',EntradasControllers_1.entradasControllers.getButacasEntrada);
     }
 }
 const entradasRoutes = new EntradasRoutes();

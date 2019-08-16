@@ -9,7 +9,7 @@ class BeneficiosRoutes {
     }
     config() {
         this.router.get('/API/Beneficios/', BeneficiosControllers_1.beneficiosControllers.get);
-		this.router.get('/API/Beneficios/getBenefEntrada/:tipo',BeneficiosControllers_1.beneficiosControllers.getBenefEntrada);
+		this.router.post('/API/Beneficios/getBenefEntrada/',BeneficiosControllers_1.beneficiosControllers.getBenefEntrada);
     }
 }
 const beneficiosRoutes = new BeneficiosRoutes();
