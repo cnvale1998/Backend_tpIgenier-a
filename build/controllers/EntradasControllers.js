@@ -38,7 +38,7 @@ class EntradasControllers {
 				
 				}
 			
-				 res.json({ message: 'Entrada guardada' });
+				 res.json({ message: 'La Entrada  ha sido guardada' });
             }
             catch (e) {
                 res.json({ message: 'Error' });
