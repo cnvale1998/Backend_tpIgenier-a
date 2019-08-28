@@ -27,7 +27,29 @@ class UsuariosControllers{
           res.json({ message: 'Ocurrio un error en usuariosController' });
         }
     }
-
+    public async updatePass(req: Request,res: Response): Promise<void> {
+        try{
+          var datos = {CONTRASENIA:String, CONTRASENIA_ANT:String, EMAIL:String};
+          datos = req.body;
+           const result = await pool.query("UPDATE `usuarios` SET `CONTRASENIA` = ? WHERE `usuarios`.`EMAIL` = ? AND `usuarios`.`CONTRASENIA`= ?",[datos.CONTRASENIA,datos.EMAIL, datos.CONTRASENIA_ANT]);
+          res.json({ message:  'Se cambio la contraseña exitosamente'  });}                        
+        catch(e){
+          res.json({ message: 'Ocurrio un error en usuariosController' });
+        }
+    }
+    /*public async updateMail(req: Request,res: Response): Promise<void> {
+        try{
+          var datos = {EMAIL:String, DOC:String,EMAIL_ANT:String};
+          datos = req.body;
+          const result = await pool.query("UPDATE `personas` SET `EMAIL` = ? WHERE `persona`.`EMAIL` = ? and `persona`.`PERSONA_TIPO`='usuario' ",[datos.EMAIL,datos.EMAIL_ANT]);
+          const result = await pool.query("UPDATE `usuarios` SET `EMAIL` = ? WHERE `usuarios`.`EMAIL` = ?",[datos.EMAIL,datos.EMAIL_ANT]);
+          // res.json({ message:  'Se cambio el correo exitosamente'  });}  
+             res.json(result);}                      
+        catch(e){
+          res.json({ message: 'Ocurrio un error en usuariosController' });
+        }
+    }*/
+ 
   
 }
   

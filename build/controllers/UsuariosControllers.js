@@ -44,5 +44,18 @@ class UsuariosControllers {
             }
         });
     }
+    updatePass(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                var datos = { CONTRASENIA: String, CONTRASENIA_ANT: String, EMAIL: String };
+                datos = req.body;
+                const result = yield database_1.default.query("UPDATE `usuarios` SET `CONTRASENIA` = ? WHERE `usuarios`.`EMAIL` = ? AND `usuarios`.`CONTRASENIA`= ?", [datos.CONTRASENIA, datos.EMAIL, datos.CONTRASENIA_ANT]);
+                res.json({ message: 'Se cambio la contraseña exitosamente' });
+            }
+            catch (e) {
+                res.json({ message: 'Ocurrio un error en usuariosController' });
+            }
+        });
+    }
 }
 exports.usuariosControllers = new UsuariosControllers();
