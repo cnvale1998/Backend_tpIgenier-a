@@ -19,7 +19,7 @@ class EntradasControllers {
             valores = req.body;
             try {
 				var combo;
-				if(valores.ID_COMBO==0){
+				if(Number(valores.ID_COMBO)==0){
 					combo=null;
 				}
 				else{
